@@ -53,19 +53,19 @@ public class BudgetFragment extends Fragment {
         ItemAdapter.ItemClick = new itemClick() {
             @Override
             public void onItemClick(item Item) {
-                Toast.makeText(getApplicationContext(), "Cell clicked" + Item.getValue(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Cell clicked" + Item.getValue(), Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onTitleClick() {
-                Toast.makeText(getApplicationContext(), "Title clicked", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Title clicked", Toast.LENGTH_LONG).show();
             }
         };
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(),
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(),
                 LinearLayoutManager.VERTICAL, false);
 
-        DividerItemDecoration dividerItemDecoration= new DividerItemDecoration (this, DividerItemDecoration.VERTICAL);
+        DividerItemDecoration dividerItemDecoration= new DividerItemDecoration (getActivity(), DividerItemDecoration.VERTICAL);
         itemsView.addItemDecoration(dividerItemDecoration);
 
         itemsView.setLayoutManager(layoutManager);
