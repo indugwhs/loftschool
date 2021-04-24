@@ -1,12 +1,14 @@
- package com.indugwhs.loftschool;
+package com.indugwhs.loftschool;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,20 +20,21 @@ import com.indugwhs.loftschool.item.itemClick;
 import java.util.ArrayList;
 import java.util.List;
 
+public class BudgetFragment extends Fragment {
 
-public class MainActivity extends AppCompatActivity{
+    private RecyclerView itemsView;
+    private itemAdapter ItemAdapter = new itemAdapter();
 
-   private RecyclerView itemsView;
-   private itemAdapter ItemAdapter = new itemAdapter();
-
+    @Nullable
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_budget, null);
         configureRecyclerView();
         generateItem();
 
+        return view;
     }
 
     private void generateItem(){
@@ -44,11 +47,10 @@ public class MainActivity extends AppCompatActivity{
 
     private void configureRecyclerView(){
 
-        itemsView = findViewById(R.id.itemsView);
+        itemsView = itemsView.findViewById(R.id.itemsView);
         itemsView.setAdapter(ItemAdapter);
 
-
-                ItemAdapter.ItemClick = new itemClick() {
+        ItemAdapter.ItemClick = new itemClick() {
             @Override
             public void onItemClick(item Item) {
                 Toast.makeText(getApplicationContext(), "Cell clicked" + Item.getValue(), Toast.LENGTH_LONG).show();
@@ -69,7 +71,6 @@ public class MainActivity extends AppCompatActivity{
         itemsView.setLayoutManager(layoutManager);
 
     }
-
 
 
 }
