@@ -1,75 +1,56 @@
  package com.indugwhs.loftschool;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.Toast;
+ import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+ import androidx.annotation.NonNull;
+ import androidx.annotation.Nullable;
+ import androidx.appcompat.app.AppCompatActivity;
+ import androidx.fragment.app.Fragment;
+ import androidx.fragment.app.FragmentManager;
+ import androidx.fragment.app.FragmentPagerAdapter;
+ import androidx.fragment.app.FragmentTransaction;
+ import androidx.viewpager.widget.ViewPager;
 
-import com.indugwhs.loftschool.item.item;
-import com.indugwhs.loftschool.item.itemAdapter;
-import com.indugwhs.loftschool.item.itemClick;
+ import com.google.android.material.tabs.TabLayout;
 
-import java.util.ArrayList;
-import java.util.List;
-
-
-public class MainActivity extends AppCompatActivity{
-
-   private RecyclerView itemsView;
-   private itemAdapter ItemAdapter = new itemAdapter();
+ public class MainActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        configureRecyclerView();
-        generateItem();
+        TabLayout tabLayout = findViewById(R.id.tabs);
+        ViewPager viewPager = findViewById(R.id.view_pager);
+
+        viewPager.setAdapter(new BudgetPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT));
+
+        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.getTabAt(0).setText(R.string.expence);
+        tabLayout.getTabAt(1).setText(R.string.income);
+
 
     }
 
-    private void generateItem(){
-        List<item> Items = new ArrayList<>();
-        Items.add(new item("PS5", "30000P"));
-        Items.add(new item("Salary", "300000P"));
+    static class BudgetPagerAdapter extends FragmentPagerAdapter {
 
-        ItemAdapter.setData(Items);
-    }
+        public BudgetPagerAdapter(@NonNull FragmentManager fm, int behavior) {
+            super(fm, behavior);
+        }
 
-    private void configureRecyclerView(){
-
-        itemsView = findViewById(R.id.itemsView);
-        itemsView.setAdapter(ItemAdapter);
-
-
-                ItemAdapter.ItemClick = new itemClick() {
-            @Override
-            public void onItemClick(item Item) {
-                Toast.makeText(getApplicationContext(), "Cell clicked" + Item.getValue(), Toast.LENGTH_LONG).show();
+        @NonNull
+        @Override
+        public Fragment getItem(int position) {
+            if (position < 2) {
+                return BudgetFragment.newInstance(position);
+            } else {
+                return null;
             }
+        }
 
-            @Override
-            public void onTitleClick() {
-                Toast.makeText(getApplicationContext(), "Title clicked", Toast.LENGTH_LONG).show();
-            }
-        };
-
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(),
-                LinearLayoutManager.VERTICAL, false);
-
-        DividerItemDecoration dividerItemDecoration= new DividerItemDecoration (this, DividerItemDecoration.VERTICAL);
-        itemsView.addItemDecoration(dividerItemDecoration);
-
-        itemsView.setLayoutManager(layoutManager);
-
+        @Override
+        public int getCount() {
+            return 2;
+        }
     }
-
-
-
 }
