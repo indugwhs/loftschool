@@ -8,4 +8,13 @@
     <string name="income">income</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="connection_lost">Sorry, we can`t load your money list</string>
+    <string name="add_money">Add income</string>
+    <string name="fill_fields">please fill all fields</string>
+    <string name="success_added">Income was successfully added</string>
+    <string name="activity_main_toolbar_title">Учет бюджета</string>
+    <string name="action_login">Войти</string>
+
+    <string name="client_secret">2GvHloZxJ5C6mbnhw-hsUD5n</string>
+    <string name="client_id" >970123857899-7fshrnd04aniqvnbb5fgbb7opkm98efm.apps.googleusercontent.com</string>
 </resources>
