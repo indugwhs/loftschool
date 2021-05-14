@@ -64,7 +64,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         return itemList;
     }
 
-    public void deleteSelectedItems() {
+    /*public void deleteSelectedItems() {
         List<Item> selectedItems = new ArrayList<>();
         for(Item item : itemList){
             if(item.isSelected()){
@@ -73,7 +73,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         }
         itemList.removeAll(selectedItems);
         notifyDataSetChanged();
-    }
+    }*/
 
 
     public void clearItems() {

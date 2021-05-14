@@ -16,8 +16,17 @@ android {
     }
 
     buildTypes {
+
+        debug {
+           // buildConfigField("String", "URL", "\"https://verdant-violet.glitch.me/\"")
+            resValue("string", "app_name", "LoftMoney-Debug")
+        }
+
         release {
-            minifyEnabled false
+
+            //buildConfigField("String", "URL", "\"https://verdant-violet.glitch.me/\"")
+            resValue("string", "app_name", "LoftMoney-Release")
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -25,7 +34,18 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-}
+
+    flavorDimensions 'target'
+    productFlavors {
+
+        alpha {
+            dimension 'target'
+            resValue("color", "colorPrimary", "#3574fa")
+        }
+
+        beta {
+            resValue("color", "colorPrimary", "#FFC107")
+        }
 
 dependencies {
 
@@ -60,4 +80,4 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-}
+}}}

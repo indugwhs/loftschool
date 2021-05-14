@@ -37,6 +37,7 @@ public class LoftApp extends Application {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://loftschool.com/android-api/basic/v1/")
+
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -47,4 +48,8 @@ public class LoftApp extends Application {
 
     }
 
+
+    public MoneyApi getMoneyApi() {
+        return moneyApi;
+    }
 }
