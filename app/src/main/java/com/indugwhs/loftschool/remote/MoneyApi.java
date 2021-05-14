@@ -1,5 +1,7 @@
 package com.indugwhs.loftschool.remote;
 
+import com.indugwhs.loftschool.screens.balance.BalanceResponse;
+
 import java.util.List;
 
 import io.reactivex.Completable;
@@ -21,4 +23,7 @@ public interface MoneyApi {
 
     @POST("items/remove")
     Single<AuthResponse> removeItem (@Query("id") String id, @Query("auth-token") String authToken);
+
+    @POST("./balance")
+    Single<BalanceResponse> getBalance (@Query("auth-token") String authToken);
 }

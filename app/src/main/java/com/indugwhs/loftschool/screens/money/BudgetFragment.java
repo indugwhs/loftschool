@@ -118,8 +118,8 @@ import static com.indugwhs.loftschool.screens.AddMoneyActivity.ARG_TYPE_BUDGET;
 
          budgetViewModel.removeItems(((LoftApp) getActivity().getApplication()).moneyApi,
                  getActivity().getSharedPreferences(getString(R.string.app_name), 0), budgetViewModel.selectedItems);
-/*
-         onLoadData();*/
+
+         onLoadData();
      }
 
 
