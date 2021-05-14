@@ -17,4 +17,15 @@
 
     <string name="client_secret">2GvHloZxJ5C6mbnhw-hsUD5n</string>
     <string name="client_id" >970123857899-7fshrnd04aniqvnbb5fgbb7opkm98efm.apps.googleusercontent.com</string>
+    <string name="title_expense">Расходы</string>
+    <string name="title_incomes">Доходы</string>
+    <string name="title_balance">Баланс</string>
+    <string name="title_dashboard">Учет бюджета</string>
+    <string name="selected">Выделено:</string>
+    <string name="delete_items_title">Вы уверены?</string>
+    <string name="delete_items_message">Вы точно хотите удалить выбранные расходы?</string>
+    <string name="action_no">Нет</string>
+    <string name="action_yes">Да</string>
+    <string name="balance_finance_title">Доступные финансы</string>
+    <string name="cost">Расход</string>
 </resources>

@@ -7,7 +7,14 @@
     <color name="yellow">#ffc107</color>
     <color name="white">#FFFFFF</color>
     <color name="green">#7ed321</color>
-
+    <color name="accentColor">#FF9E57</color>
+    <color name="cellSelectionColor">#EFEFEF</color>
+    <color name="selectionColorPrimary">#333F59</color>
+    <color name="inactiveTextColor">#CC8BAAEF</color>
+    <color name="primaryTextColor">#666664</color>
+    <color name="orange">#FFC107</color>
+    <color name="dividerColor">#EFEFEF</color>
+    <color name="colorGreen">#7ED321</color>
 
 
 </resources>

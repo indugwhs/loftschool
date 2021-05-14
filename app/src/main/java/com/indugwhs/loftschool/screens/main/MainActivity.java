@@ -1,8 +1,7 @@
   package com.indugwhs.loftschool.screens.main;
 
- import android.content.Intent;
  import android.os.Bundle;
- import android.view.View;
+ import android.widget.FrameLayout;
 
  import androidx.annotation.NonNull;
  import androidx.annotation.Nullable;
@@ -10,27 +9,28 @@
  import androidx.fragment.app.Fragment;
  import androidx.fragment.app.FragmentManager;
  import androidx.fragment.app.FragmentPagerAdapter;
- import androidx.viewpager.widget.ViewPager;
 
- import com.google.android.material.floatingactionbutton.FloatingActionButton;
- import com.google.android.material.tabs.TabLayout;
  import com.indugwhs.loftschool.R;
- import com.indugwhs.loftschool.screens.AddMoneyActivity;
-
- import static com.indugwhs.loftschool.screens.AddMoneyActivity.ARG_TYPE_BUDGET;
- import static com.indugwhs.loftschool.screens.main.BudgetFragment.REQUEST_CODE;
+ import com.indugwhs.loftschool.screens.dashboard.DashboardFragment;
+ import com.indugwhs.loftschool.screens.money.BudgetFragment;
 
   public class MainActivity extends AppCompatActivity{
 
-
-
+      private FrameLayout containerView;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        containerView = findViewById(R.id.container_view);
 
-        TabLayout tabLayout = findViewById(R.id.tabs);
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container_view, new DashboardFragment())
+                .commitNow();
+
+       /* TabLayout tabLayout = findViewById(R.id.tabs);
         ViewPager viewPager = findViewById(R.id.view_pager);
 
         viewPager.setAdapter(new BudgetPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT));
@@ -49,14 +49,14 @@
                 intent.putExtra(ARG_TYPE_BUDGET, activeFragmentIndex);
                 startActivityForResult(intent, REQUEST_CODE);
             }
-        });
+       });*/
 
 
     }
 
 
 
-    static class BudgetPagerAdapter extends FragmentPagerAdapter {
+   /* static class BudgetPagerAdapter extends FragmentPagerAdapter {
 
         public BudgetPagerAdapter(@NonNull FragmentManager fm, int behavior) {
             super(fm, behavior);
@@ -76,7 +76,7 @@
         public int getCount() {
             return 2;
         }
-    }
+    }*/
 
 
 }

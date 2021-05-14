@@ -27,12 +27,13 @@ public class LoginActivity extends AppCompatActivity {
     private LoginViewModel loginViewModel;
     private GoogleSignInClient mGoogleSignInClient;
     private int RC_SIGN_IN = 666;
+    private AppCompatButton loginEnterView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+         loginEnterView = findViewById(R.id.loginEnterView);
 
         configureView();
         configureViewModel();
@@ -77,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void configureView(){
-        AppCompatButton loginEnterView = findViewById(R.id.loginEnterView);
+
 
         loginEnterView.setOnClickListener(v -> {
             //loginViewModel.makeLogin(((LoftApp) getApplication()).authApi);
@@ -91,8 +92,8 @@ public class LoginActivity extends AppCompatActivity {
 
         loginViewModel.messageString.observe(this, error -> {
             if (!TextUtils.isEmpty(error)) {
-                Toast.makeText(getApplicationContext(), error, Toast.LENGTH_LONG).show();
-            }
+
+            } Toast.makeText(getApplicationContext(), error, Toast.LENGTH_LONG).show();
         });
 
         loginViewModel.authToken.observe(this, authToken -> {
