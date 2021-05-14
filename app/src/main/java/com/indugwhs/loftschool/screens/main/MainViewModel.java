@@ -26,7 +26,7 @@ public class MainViewModel extends ViewModel {
     public MutableLiveData<Integer> messageInt = new MutableLiveData<>(-1);
     public MutableLiveData<Boolean> isFinishRefresh = new MutableLiveData<>();
 
-    @Override
+   /* @Override
     protected void onCleared() {
         compositeDisposable.dispose();
         super.onCleared();
@@ -59,5 +59,5 @@ public class MainViewModel extends ViewModel {
                     isFinishRefresh.postValue(true);
                     messageString.postValue(throwable.getLocalizedMessage());
                 }));
-    }
+    }*/
 }

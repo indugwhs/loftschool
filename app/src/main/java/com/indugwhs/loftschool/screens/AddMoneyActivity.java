@@ -1,6 +1,7 @@
 package com.indugwhs.loftschool.screens;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -10,11 +11,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.indugwhs.loftschool.R;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
@@ -27,7 +30,9 @@ public class AddMoneyActivity extends AppCompatActivity {
     private String mPrice;
     private String mName;
     private int currentFragment;
+    private final CompositeDisposable compositeDisposable = new CompositeDisposable();
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,8 +73,18 @@ public class AddMoneyActivity extends AppCompatActivity {
                 checkEditTextHasText();
             }
         });
+
+
+
         configureButton();
     }
+
+    @Override
+    protected void onDestroy() {
+        compositeDisposable.dispose();
+        super.onDestroy();
+    }
+
 
     private void configureButton() {
 
